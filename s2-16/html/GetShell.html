@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>S2-16 GetShell</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="Generator" content="S2-16 GetShell"/>
+<meta name="Author" content="Random"/>
+<meta name="Keywords" content="S2-16 GetShell"/>
+<meta name="Description" content="S2-16 GetShell By Random"/>
+<link rel="shortcut icon" href="../resource/360.ico" />
+<link rel="stylesheet" href="../resource/screen.css" type="text/css" media="screen, projection"/> 
+<link rel="stylesheet" href="../resource/print.css" type="text/css" media="print"/> 
+<!--[if lt IE 8]>
+<link rel="stylesheet" href="http://localhost/xssplatform/themes/default/style/ie.css" type="text/css" media="screen, projection">
+<![endif]-->
+<link rel="stylesheet" href="../resource/style.css" type="text/css" media="screen, projection"/>
+<script type="text/javascript" src="../resource/jquery.js"></script>
+<script type="text/javascript"  src="../resource/s2-16.js" charset="GB2312"></script>
+</head>
+
+<body style="background: #e7e7e7;">
+<!--<body style="background: #ffffffff;">-->
+
+<div class="container">
+	<div class="header">
+		<img src='../resource/header.jpg'  alt="S2-16 Exp-Panel " />
+	</div>
+	<div  id="managepanel" align="right">
+		<label><a href="../protect/index.php" target="_blank">[管理]</a></label>
+		<label><a href="../protect/ViewIDSlog.php" target="_blank">[WAF]</a></label>
+	</div>
+	<div id="panelmenu">
+		<label  id="CheckVlunsBlock">漏洞检测</label>
+		<label  id="CommandBlock">命令执行</label>
+		<label  id="GetShellBlock">文件上传</label>
+        <label  id="FileManageBlock">连接小马</label>
+		<label  id="MultiCheckBlock">批量检测</label>
+	</div>
+	<div id="panels">
+		<fieldset>
+		<legend align="right">Struts2.x &lt;= 2.3.15</legend>
+			<!--CheckVulnsPanel-->
+			<div id="CheckVulnsPanel"  align="center">
+				<br/><br/>
+				<span>
+				<label class="actionlabel">http://</label>
+				<input type="text" class="check" name="CheckAction" id="CheckAction" value='kdi.mscmalaysia.my/DisplayReportsArticles.action'/> <!--'ees.chinasciencejournal.com/user/login.action'-->
+				</span>
+				<span>
+				<nobr><input type="button" class="checktrigger"  value="开始检测" id="StartCheckVulns"/> </nobr>
+				</span>
+				<div id="checking" class="checking"></div>
+				<div id="CheckVlunsShow" style="margin:50px auto;"></div>
+			</div>
+			<!--CommandPanel-->
+			<div id="CommandPanel">
+				<input type="text" class="command" name="command" id="command" value="whoami"/>
+				<nobr><input type="button" id="ExecuteCMD" class="executecmd" value="执行命令"/></nobr>
+				<!--<nobr><input type="button" id="ExecuteCMD" class="executecmd" value="服务器信息"/></nobr>-->
+				<nobr><input type="button"  id="ClearCmdResult" class="executecmd"  value="清空"/> </nobr>
+                <nobr><input type="checkbox"     checked="checked" /> <label >加密执行</label></nobr>
+				<div id="CommandResult" wrap="virtual" ><br/><br/><br/><br/></div>
+				<div id="CommandInfoShow" ></div>
+			</div>
+
+			<!--GetShellPanel-->
+			<div id="GetShellPanel">
+				<div> 
+        			<label >文件路径: </label>
+        			<input type="text" class="uploadpath" name="uploadpath" id="uploadpath" />&nbsp;
+        			<nobr><input type="button" class="clearuploadpath"  value="&nbsp&nbsp清空&nbsp&nbsp" id="clearuploadpath"/> </nobr>
+        			<label style="padding:0px 0px 0px 20px">文件名: </label>
+        			<input type="text" class="shellname" name="shellname" id="shellname" value="test.jsp"/>&nbsp;
+        			<nobr><input type="button" class="uploadfile"  value="上传文件" id="uploadfile"/> </nobr>
+				</div>
+                <div style="padding-left:55px">
+                    <input type="checkbox"     checked="checked" /><label >加密传输</label>
+                    
+                </div>
+                
+				<div style="padding:0px 0px 0px 50px">
+					<nobr><input type="radio" name="specfile" class="specfile" id="specfile1" value="xiaoma.txt" checked="checked"/>jsp小马</nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<nobr><input type="radio" name="specfile" class="specfile" id="specfile2" value="caidao.txt" />菜刀马</nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <nobr><input type="radio" name="specfile" class="specfile" id="specfile3" value="jspspy.txt"/>jspspy</nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<nobr><input type="radio" name="specfile" class="specfile" id="specfile4" value="k8cmd.txt"/>k8cmd</nobr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<nobr><input type="radio" name="specfile" class="specfile" id="specfile5" value="localfile"/>本地文件:</nobr><input type="file" class="selectlocalfile"/></nobr>
+					<label  id="ShowShellCodeBlock" >view file</label>					
+					<textarea id="ContentShell"  ></textarea>
+                    <div id="contentShow"></div>
+				</div>
+
+			</div>
+			<!--FileManagePanel-->
+			<div id="FileManagePanel">
+				<div > 
+        			<label >小马地址: </label>
+        			<input type="text" class="xiaoma_url" name="xiaoma_url" id="xiaoma_url" />&nbsp;
+        			<nobr><input type="button" class="clearuploadpath2"  value="&nbsp&nbsp清空&nbsp&nbsp" id="clearuploadpath2"/> </nobr>
+                    <label style="padding:0px 0px 0px 20px">文件名: </label>
+        			<input type="text" class="shellname2" name="shellname2" id="shellname2" value=".error.jsp"/>&nbsp;
+        			<nobr><input type="button" class="uploadfile2"  value="上传文件" id="uploadfile2"/> </nobr>
+				</div>	
+                <label >文件内容:</label>
+                <div style="padding-left: 50px;">
+                    <textarea class="ContentShell2" id="ContentShell2" ></textarea>
+                </div>	
+                <div id="contentShow2" ></div>		
+			</div>            
+			<!--MultiCheckPanel-->
+			<div id="MultiCheckPanel" >
+				<label for="title"><h2>Access forbidden!</h2></label>
+				<div id="MultiCheckInfoShow"></div>
+			</div>
+		</fieldset> 
+	</div>
+<!--
+	<div id="360pic">
+		<a href="http://webscan.360.cn/index/checkwebsite/url/random90s.xicp.net"><img border="0" src="http://img.webscan.360.cn/status/pai/hash/7a7eb6e18107eaa2d8c464ab2767e8f6"/></a>
+	</div>
+-->
+</div>
+</body>
+</html>
