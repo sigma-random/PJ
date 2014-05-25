@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<title> SocicalEngineerDB </title>
+<meta name="Generator" content="Random">
+<meta name="Author" content="Random">
+<meta name="Keywords" content="Random">
+<meta name="Description" content="Random">
+<link rel="shortcut icon" href="resource/favicon.ico" />
+<link rel="stylesheet" type="text/css" href="resource/main.css" />
+<script type="text/javascript" src="resource/jquery.js"></script>
+<script type="text/javascript"  src="resource/socialengineer.js" charset="GB2312"></script>
+ 
+</head>
+<body bgcolor="gray">
+	<!--主数据区-->
+	<div class="container" id="container">
+	
+		<div class="content">
+			<div class="header">
+				<!--<label class="caption">XX库</label>-->
+			</div>
+			<div class="center">
+				<fieldset>
+				<!--<legend align="right" ><label class="caption">XX库</label></legend>-->
+				<legend align="right" ><label class="caption">SEDB</label></legend>
+				<div class="searchpanel">
+				<div class="onsearching" >
+					<div class="searching" id="searching_pic"></div>
+				</div>
+					<select class="searchtype" id="searchtype" name="searchtype">
+						<option value="username"  selected="selected">用户名</option>
+						<option value="mail">邮箱</option>
+						<option value="phone">电话</option>
+					</select>
+					<input type="text" class="keyword" id="keyword" autocomplete="on" value="admin"/>
+					<button id="dosearch">查  询</button><br />
+					<div class="searchcfg" id="searchcfg">
+						<button class="cfgtrriger" id="cfgtrriger">参数配置</button>
+						<div class="cfgvalues" id="cfgvalues">
+							<div class="cfgmune" id="cfgmune">  
+								<button id="dbcfgtrigger">数据库</button>
+								<button id="colcfgtrigger">字段</button> 
+								<button id="smtrigger">模式</button>    
+							</div>
+							<div class="dbcfgpanel" id="dbcfgpanel"></div>
+							<div class="colcfgpanel" id="colcfgpanel"></div>
+							<div class="smcfgpanel" id="smcfgpanel" >
+								<table>
+									<tr>
+										<td><input type="radio" name="searchmethod" value="1"   />精确查询</td>
+										<td><input type="radio" name="searchmethod" value="2" checked="checked"/>模糊查询</td>
+									</tr>
+									<tr><td></td></tr><tr><td></td></tr>
+									<tr>
+										<td><input type="checkbox" name="showresultcount" id="showresultcount"/>显示结果数</td>
+									</tr>
+								</table>
+							</div>
+						</div>               
+					</div>
+					<div class="searchresultpanel" id="searchresultpanel"></div>
+					<div class="pagepanel" id="pagepanel">
+						<button class="prepage" id="prepage">上一页</button>
+						<button class="nextpage" id="nextpage">下一页</button>
+					</div>
+				</div>
+				</fieldset>
+			</div>
+			<div class="bottom">
+				<div class="searchinfo" id="searchinfo"></div>
+			</div>
+		</div>
+	</div>
+
+	<!--左侧菜单-->
+	<div class="menu">
+		<ul>
+			<li onclick="open_login_panel()">登录</li>
+			<li onclick="open_register_panel()">注册</li>
+			<li onclick="open_S2_16()">S2-16</li>
+		</ul>
+	<div>
+	<!--登陆框-->
+	<div class="login_hide" name="mylogin" id="mylogin">
+		<div class="login-content" id="login-content" name="login-content">
+			<div class="title-login" id="title-login">
+				<label class="close" id="closelogin" onclick="close_login_panel()">X</label><br/>
+			</div>
+			<div class="data-login">
+				<p class="title">用户登录</p>
+				<table>
+					<tr>
+						<td >用户名:</td>
+						<td><input type="text" name="username"/></td>
+					</tr>
+					<tr>
+						<td>密码:</td>
+						<td><input type="password" name="password"/></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<button  onclick="do_login()">登录</button>
+							<button  onclick="close_login_panel()">取消</button>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+
+<div class="layer" id="layer"></div>
+</body>
+</html>
